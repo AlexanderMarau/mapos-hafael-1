@@ -17,7 +17,7 @@ ou acesse a __[demo](https://www.sistemamapos.esy.es/mapos)__.
 3. Configure sua URL no arquivo `config.php` alterando a base_url. 
 4. Crie o banco de dados e execute o arquivo `banco.sql` para criar as tabelas.
 5. Configure os dados de acesso ao banco de dados no arquivo `database.php`.
-6. Acesse sua URL e coloque os dados de acesso: `admin@admin.com` e `123456`.
+6. Acesse sua URL e coloque os dados de acesso: `admin@email.com` e `123456`.
 
 
 ### Frameworks/Bibliotecas
