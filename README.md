@@ -15,7 +15,7 @@ ou acesse a __[demo](https://www.sistemamapos.esy.es/mapos)__.
 1. Faça o download dos arquivos
 2. Extraia o pacote e copie para seu webserver.
 3. Configure sua URL no arquivo `config.php` alterando a base_url. 
-4. Crie o banco de dados e execute o arquivo `banco.sql` para criar as tabelas.
+4. Crie o banco de dados e execute o arquivo `os-hafael.sql` para criar as tabelas.
 5. Configure os dados de acesso ao banco de dados no arquivo `database.php`.
 6. Acesse sua URL e coloque os dados de acesso: `admin@email.com` e `123456`.
 
