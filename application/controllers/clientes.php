@@ -38,7 +38,13 @@ class Clientes extends CI_Controller {
 
     function gerenciar(){
 
-
+        $where = '';
+        $perPage = 10;
+        $canalEntrada = $this->input->get('canalEntrada');
+        if ($canalEntrada != "") {
+            $where = 'canalEntrada = "'.$canalEntrada.'"';
+            $perPage = 100;
+        }
 
         if(!$this->permission->checkPermission($this->session->userdata('permissao'),'vCliente')){
 
@@ -60,7 +66,7 @@ class Clientes extends CI_Controller {
 
         $config['total_rows'] = $this->clientes_model->count('clientes');
 
-        $config['per_page'] = 10;
+        $config['per_page'] = $perPage;
 
         $config['next_link'] = 'Próxima';
 
@@ -102,9 +108,7 @@ class Clientes extends CI_Controller {
 
         $this->pagination->initialize($config);     
 
-        
-
-        $this->data['results'] = $this->clientes_model->get('clientes','idClientes,nomeCliente,documento,telefone,celular,email,canalEntrada,canalEntradaIndicacao,rua,numero,bairro,cidade,estado,cep','',$config['per_page'],$this->uri->segment(3));
+        $this->data['results'] = $this->clientes_model->get('clientes','idClientes,nomeCliente,documento,telefone,celular,email,canalEntrada,canalEntradaIndicacao,rua,numero,bairro,cidade,estado,cep',$where,$config['per_page'],$this->uri->segment(3));
 
         
 
