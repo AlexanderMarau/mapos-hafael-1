@@ -67,7 +67,7 @@
 
     <!--Clientes-->
     <div class="span6">
-        <div class="widget-box" style="min-height: 200px">
+        <div class="widget-box" style="max-height: 400px; display: block; overflow-y: scroll;">
             <div class="widget-title">
                 <span class="icon">
                     <i class="icon-user"></i>
@@ -84,7 +84,7 @@
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            <th>CPF/CNPJ</th>
+                            <th>Contato</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -99,7 +99,7 @@
                                 echo '<tr>';
                                 echo '<td>' . $r->idClientes . '</td>';
                                 echo '<td>' . $r->nomeCliente . '</td>';
-                                echo '<td>' . $r->documento . '</td>';
+                                echo '<td>' . $r->celular . ' | ' . $r->telefone . '<br>' . $r->email . '</td>';
                                 echo '<td>';
 
                                 if($this->permission->checkPermission($this->session->userdata('permissao'),'vCliente')){
@@ -122,7 +122,7 @@
                                 echo '<tr>';
                                 echo '<td>' . $r->idClientes . '</td>';
                                 echo '<td>' . $r->nomeCliente . '</td>';
-                                echo '<td>' . $r->documento . '</td>';
+                                echo '<td>' . $r->celular . ' | ' . $r->telefone . '<br>' . $r->email . '</td>';
                                 echo '<td>';
 
                                 if($this->permission->checkPermission($this->session->userdata('permissao'),'vCliente')){
@@ -209,7 +209,7 @@
 
     <!--Ordens de Serviço-->
     <div class="span6">
-         <div class="widget-box" style="min-height: 200px">
+         <div class="widget-box" style="max-height: 400px; display: block; overflow-y: scroll;">
             <div class="widget-title">
                 <span class="icon">
                     <i class="icon-tags"></i>
@@ -226,7 +226,7 @@
                         <tr style="backgroud-color: #2D335B">
                             <th>#</th>
                             <th>Data Inicial</th>
-                            <th>Defeito</th>
+                            <th>Descrição</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -241,7 +241,7 @@
                             echo '<tr>';
                             echo '<td>' . $r->idOs . '</td>';
                             echo '<td>' . $dataInicial . '</td>';
-                            echo '<td>' . $r->defeito . '</td>';
+                            echo '<td>' . $r->equipamento .' '. $r->marca . ' ' . $r->modelo . '</td>';
 
                             echo '<td>';
                             if($this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){

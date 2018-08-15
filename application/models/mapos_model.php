@@ -122,13 +122,14 @@ class Mapos_model extends CI_Model {
          // buscando clientes
 
          $this->db->like('nomeCliente',$termo);
-
-         $this->db->limit(5);
+         $this->db->order_by('idClientes','desc');
+         $this->db->limit(50);
 
          $data['clientes'] = $this->db->get('clientes')->result();
 
          // buscando telefone
          $this->db->like('celular',$termo);
+         $this->db->order_by('idClientes','desc');
          $this->db->limit(5);
          $data['celular'] = $this->db->get('clientes')->result();
 
@@ -136,9 +137,9 @@ class Mapos_model extends CI_Model {
 
          // buscando os
 
-         $this->db->like('idOs',$termo);
-
-         $this->db->limit(5);
+         $this->db->like('marca',$termo);
+         $this->db->order_by('idOs','desc');
+         $this->db->limit(50);
 
          $data['os'] = $this->db->get('os')->result();
 
