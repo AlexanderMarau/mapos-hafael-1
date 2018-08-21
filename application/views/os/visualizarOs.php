@@ -45,9 +45,11 @@
                         echo '<a title="Enviar WhatsApp" class="btn btn-mini btn-inverse" id="enviarWhatsApp" target="_blank" href="https://wa.me/55'.$zapnumber.'?text=Prezado%20'.$result->nomeCliente.'%20. Sua%20OS'.$result->idOs.'%20foi%20atualizada.%20Entre%20em%20contato%20para%20saber%20mais%20detalhes."><i class="icon-phone icon-white"></i> WhatsApp</a>'; 
                     } ?>
                     <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
-                        echo '<a title="Enviar Email" class="btn btn-mini btn-inverse" id="enviarEmail"><i class="icon-envelope icon-white"></i> Email</a>'; 
+                        echo '<a title="Enviar Alerta" class="btn btn-mini btn-inverse" id="enviarEmail"><i class="icon-envelope icon-white"></i> Enviar Alerta</a>'; 
                     } ?>
-                    <!-- <a id="imprimir" title="Imprimir" class="btn btn-mini btn-inverse" href=""><i class="icon-print icon-white"></i> Imprimir OS Antiga</a> -->
+                    <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'eOs')){
+                        echo '<a title="Enviar OS" class="btn btn-mini btn-inverse" id="enviarEmailOs"><i class="icon-envelope icon-white"></i> Enviar OS</a>'; 
+                    } ?>
                     <a id="imprimir2" title="Imprimir" class="btn btn-mini btn-inverse" href=""><i class="icon-print icon-white"></i> Imprimir</a>
                     <input id="urlCliente" type="hidden" value=<?php echo '"http://www.computadorpc.com/os/index.php/clientes/visualizar/'.$result->idClientes.'"' ?></input>
                 </div>
@@ -59,9 +61,9 @@
                 <page size="A4">
                     <!-- via loja -->
                     <page size="A2" id="osLoja">
-                        <div class="invoice-content">
-                            <div class="invoice-head" style="margin-bottom: 0">
-                                <table class="table table-bordered" style="margin-bottom: 10px;">
+                        <div class="invoice-content" style="padding: 20px;">
+                            <div class="invoice-head" style="margin-bottom: 0;clear: both;overflow: hidden;width: auto;">
+                                <table class="table table-bordered" style="margin-bottom: 10px;width: 100%;border: 1px solid #ddd;border-collapse: separate;border-left: 0;">
                                     <tbody>
                                         <tr>
                                             <td style="width: 15%; font-size: 13px; text-align: center; vertical-align: middle;">#<?php echo $result->idOs?></td>
@@ -70,7 +72,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <table class="table" style="margin-bottom: 0">
+                                <table class="table" style="margin-bottom: 0;max-width: 100%;background-color: transparent;border-collapse: collapse;border-spacing: 0;">
                                     <tbody>
                                             <?php if($emitente == null) {?>        
                                             <tr>
@@ -78,9 +80,9 @@
                                             </tr>
                                             <?php } else {?>
                                             <tr>
-                                                <td style="width: 100px; padding: 8px;"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
-                                                <td style="line-height: 17px;"> <span style="font-size: 14px; "> <?php echo $emitente[0]->nome; ?></span> </br><span style="font-size: 10px;"><?php echo $emitente[0]->rua.', '.$emitente[0]->numero.', '.$emitente[0]->bairro.' - '.$emitente[0]->cidade.' - '.$emitente[0]->uf; ?> </br> <?php if ($emitente[0]->telefone != ""){echo "Fone: "; echo $emitente[0]->telefone;} if($emitente[0]->celular != "") { echo ' Celular: '; echo $emitente[0]->celular; } if($emitente[0]->whatsapp != "") { echo ' WhatsApp: '; echo $emitente[0]->whatsapp; } ?></br> E-mail: <?php echo $emitente[0]->email; ?> </span></td>
-                                                <td style="width: 18%; text-align: center"><span style="font-size: 12px">#Protocolo: <?php echo $result->idOs?></span></br><span style="font-size: 12px">Emissão: <?php echo date('d/m/Y')?></span><?php if($result->garantia == 'selecione'){echo '';} else echo "</br><span style='font-size: 12px'>Garantia: ".$result->garantia."</span>"?></td>
+                                                <td style="width: 100px; padding: 8px;line-height: 20px;text-align: left;vertical-align: top;border-top: 1px solid #ddd;"><img style="height: auto;max-width: 100%;vertical-align: middle;border: 0;" src=" <?php echo $emitente[0]->url_logo; ?> "></td>
+                                                <td style="line-height: 17px;padding: 8px;text-align: left;vertical-align: top;border-top: 1px solid #ddd;"> <span style="font-size: 14px; "> <?php echo $emitente[0]->nome; ?></span> </br><span style="font-size: 10px;"><?php echo $emitente[0]->rua.', '.$emitente[0]->numero.', '.$emitente[0]->bairro.' - '.$emitente[0]->cidade.' - '.$emitente[0]->uf; ?> </br> <?php if ($emitente[0]->telefone != ""){echo "Fone: "; echo $emitente[0]->telefone;} if($emitente[0]->celular != "") { echo ' Celular: '; echo $emitente[0]->celular; } if($emitente[0]->whatsapp != "") { echo ' WhatsApp: '; echo $emitente[0]->whatsapp; } ?></br> E-mail: <?php echo $emitente[0]->email; ?> </span></td>
+                                                <td style="width: 18%; text-align: center;padding: 8px;line-height: 20px;vertical-align: top;border-top: 1px solid #ddd;"><span style="font-size: 12px">#Protocolo: <?php echo $result->idOs?></span></br><span style="font-size: 12px">Emissão: <?php echo date('d/m/Y')?></span><?php if($result->garantia == 'selecione'){echo '';} else echo "</br><span style='font-size: 12px'>Garantia: ".$result->garantia." dias</span>"?></td>
                                             </tr>
                                             <?php } ?>
                                     </tbody>
@@ -225,10 +227,7 @@
         $(".linkCliente").click(function(){
             window.location.href = $("#urlCliente").val();
         })
-        $("#imprimir").click(function(e){
-            e.preventDefault();
-            PrintElem('#printOs');
-        })
+
         $("#imprimir2").click(function(e){
             e.preventDefault();
             PrintElem('#printOs2');
@@ -293,6 +292,47 @@
                         $("#enviarWhatsApp").css("background-color","green").attr("disabled","disabled");
                     }else{
                         $("#enviarWhatsApp").css("background-color","red");
+                    }
+                }
+            });
+           };
+
+        });
+
+        $(document).on('click', '#enviarEmailOs', function(event) {
+           event.preventDefault();
+
+           var body = $("#osLoja").html();
+           var urlEmail = document.domain;
+
+            var html = '';
+            html = html + "<html><head><title>Computador.com - OS</title>";
+            html = html + "</head><body style='background-color: white;'>";
+            html = html + body;
+            html = html + "</body></html>";
+
+           if ( $(this).attr("disabled") ) {
+            console.log("bt off");
+            return false;
+           } else {
+            var urlAtual = $("#urlAtual").val();
+            var id = $("#sendOsId").val();
+            var email = $("#sendEmailCliente").val();
+            var nome = $("#sendNomeCliente").val();
+            var subject = "[#"+id+"] - Ordem de Serviço";
+            var emailBody = html;
+
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url();?>index.php/os/enviarEmail",
+                data:{id:id, email:email, nome:nome, subject:subject, emailBody:emailBody},
+                dataType: 'json',
+                ContentType:"application/json",
+                success: function(data){
+                    if(data.result == true){
+                        $("#enviarEmailOs").css("background-color","green").attr("disabled","disabled");
+                    }else{
+                        $("#enviarEmailOs").css("background-color","red");
                     }
                 }
             });
