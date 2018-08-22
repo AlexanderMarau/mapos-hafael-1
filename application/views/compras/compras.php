@@ -76,7 +76,8 @@ else{ ?>
             echo '<td>'.$r->descricao.'</td>';
             echo '<td>'.number_format($r->valor,2,',','.').'</td>';
             if($r->rastreio){
-            echo '<td style="text-align:center"><a target="_blank" href="http://websro.correios.com.br/sro_bin/txect01$.QueryList?P_LINGUA=001&P_TIPO=001&P_COD_UNI='.$r->rastreio.'" class="tip-bottom" data-original-title="Pesquisar"><i class="icon-truck icon-white"></i></a></td>';
+            echo '
+            <td style="text-align:center"><a target="_blank" href="'.base_url().'application/views/compras/sro.php?objeto='.$r->rastreio.'" class="tip-bottom" data-original-title="Pesquisar"><i class="icon-truck icon-white"></i></a></td>';
             } else {
                 echo "<td></td>";
             }
@@ -99,7 +100,7 @@ else{ ?>
 </table>
 </div>
 </div>
-	
+    
         
 
 

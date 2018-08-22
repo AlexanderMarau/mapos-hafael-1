@@ -18,25 +18,15 @@
                                 <label for="solicitante">Solicitante<span class="required">*</span></label>
                                 <select class="span12" name="solicitante" id="solicitante">
                                     <option <?php if($result->solicitante == 'selecione'){echo 'selected';} ?> value="selecione">Selecione</option>
-                                    <option <?php if($result->solicitante == 'Alan Silveira'){echo 'selected';} ?> value="Alan Silveira">Alan Silveira</option>
-                                    <option <?php if($result->solicitante == 'Celso Torok'){echo 'selected';} ?> value="Celso Torok">Celso Torok</option>
-                                    <option <?php if($result->solicitante == 'José Marques'){echo 'selected';} ?> value="José Marques">José Marques</option>
-                                    <option <?php if($result->solicitante == 'Rafael Marques'){echo 'selected';} ?> value="Rafael Marques">Rafael Marques</option>
-                                    <option <?php if($result->solicitante == 'Rosiane Ribeiro'){echo 'selected';} ?> value="Rosiane Ribeiro">Rosiane Ribeiro</option>
-                                    <option <?php if($result->solicitante == 'Shirley Marques'){echo 'selected';} ?> value="Shirley Marques">Shirley Marques</option>
-                                </select>
+                                    <option <?php if($result->solicitante == 'Luciano Cruz'){echo 'selected';} ?> value="Luciano Cruz">Luciano Cruz</option>
+                                    </select>
                             </div>
                             <div class="span4">
                                 <label for="comprador">Comprador</label>
                                 <select class="span12" name="comprador" id="comprador">
                                     <option <?php if($result->comprador == 'selecione'){echo 'selected';} ?> value="selecione">Selecione</option>
-                                    <option <?php if($result->comprador == 'Alan Silveira'){echo 'selected';} ?> value="Alan Silveira">Alan Silveira</option>
-                                    <option <?php if($result->comprador == 'Celso Torok'){echo 'selected';} ?> value="Celso Torok">Celso Torok</option>
-                                    <option <?php if($result->comprador == 'José Marques'){echo 'selected';} ?> value="José Marques">José Marques</option>
-                                    <option <?php if($result->comprador == 'Rafael Marques'){echo 'selected';} ?> value="Rafael Marques">Rafael Marques</option>
-                                    <option <?php if($result->comprador == 'Rosiane Ribeiro'){echo 'selected';} ?> value="Rosiane Ribeiro">Rosiane Ribeiro</option>
-                                    <option <?php if($result->comprador == 'Shirley Marques'){echo 'selected';} ?> value="Shirley Marques">Shirley Marques</option>
-                                </select>
+                                    <option <?php if($result->comprador == 'Luciano Cruz'){echo 'selected';} ?> value="Luciano Cruz">Luciano Cruz</option>
+                                    </select>
                             </div>
                             <div class="span4">
                                 <label for="fornecedor">Fornecedor</label>
@@ -82,7 +72,7 @@
                             <div class="span3">
                                 <label for="rastreio" class="control-label">Rastreio</label>
                                 <input type="text" class="span10" name="rastreio" id="rastreio" value="<?php echo $result->rastreio ?>" />
-                                <a target="_blank" href="http://websro.correios.com.br/sro_bin/txect01$.QueryList?P_LINGUA=001&P_TIPO=001&P_COD_UNI=<?php echo $result->rastreio ?>" class="tip-bottom" data-original-title="Pesquisar"><i class="icon-search icon-white"></i></a>
+                                <a target="_blank" href="<?php echo base_url()?>application/views/compras/sro.php?objeto=<?php echo $result->rastreio ?>" class="tip-bottom" data-original-title="Pesquisar"><i class="icon-search icon-white"></i></a>
                             </div>
                         </div>
 

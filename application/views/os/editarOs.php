@@ -52,12 +52,8 @@
                                             <label for="operador_id">Atendente<span class="required">*</span></label>
                                             <select class="span12" name="operador_id" id="operador_id">
                                                 <option <?php if($result->operador_id == 'selecione'){echo 'selected';} ?> value="selecione">Selecione</option>
-                                                <option <?php if($result->operador_id == '9'){echo 'selected';} ?> value="9">Alan Silveira</option>
-                                                <option <?php if($result->operador_id == '5'){echo 'selected';} ?> value="5">Celso Torok</option>
-                                                <option <?php if($result->operador_id == '6'){echo 'selected';} ?> value="6">José Marques</option>
-                                                <option <?php if($result->operador_id == '3'){echo 'selected';} ?> value="3">Rafael Marques</option>
-                                                <option <?php if($result->operador_id == '7'){echo 'selected';} ?> value="7">Rosiane Ribeiro</option>
-                                                <option <?php if($result->operador_id == '4'){echo 'selected';} ?> value="4">Shirley Marques</option>
+                                                <option <?php if($result->operador_id == '3'){echo 'selected';} ?> value="3">Luciano Cruz</option>
+                                                
                                             </select>
                                         </div>
                                         <div class="span4">
@@ -481,7 +477,7 @@
                                             echo '<td>'.$dataPedido.'</td>';
                                             echo '<td>'.$dataPrevista.'</td>';
                                             if($s->rastreio){
-                                            echo '<td style="text-align:center"><a target="_blank" href="http://websro.correios.com.br/sro_bin/txect01$.QueryList?P_LINGUA=001&P_TIPO=001&P_COD_UNI='.$s->rastreio.'" class="tip-bottom" data-original-title="Pesquisar"><i class="icon-truck icon-white"></i></a></td>';
+                                            echo '<td style="text-align:center"><a target="_blank" href="'.base_url().'application/views/compras/sro.php?objeto='.$s->rastreio.'" class="tip-bottom" data-original-title="Pesquisar"><i class="icon-truck icon-white"></i></a></td>';
                                             } else {
                                                 echo "<td></td>";
                                             }
@@ -563,9 +559,8 @@
         <select class="span12" name="usuarios_id" id="usuarios_id">
             <option <?php if($result->usuarios_id == 'selecione'){echo 'selected';} ?> value="">Selecione</option>
             <option <?php if($result->usuarios_id == '1'){echo 'selected';} ?> value="1">Loja</option>
-            <option <?php if($result->usuarios_id == '5'){echo 'selected';} ?> value="5">Celso Torok</option>
-            <option <?php if($result->usuarios_id == '6'){echo 'selected';} ?> value="6">José Marques</option>
-            <option <?php if($result->usuarios_id == '3'){echo 'selected';} ?> value="3">Rafael Marques</option>
+            <option <?php if($result->usuarios_id == '3'){echo 'selected';} ?> value="3">Luciano Cruz</option>
+           
         </select>
       </div>
     </div>
